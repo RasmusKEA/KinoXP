@@ -23,9 +23,27 @@
 
 <div class="container createMovieDiv">
     <div class="centerDiv">
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0 loginBtn createBtn">Create movie</button>
+
+        <button type="button" id="myBtn" class="btn btn-outline-success my-2 my-sm-0 loginBtn createBtn">Create movie</button>
+
     </div>
 </div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <textarea>Movie Title</textarea>
+        <textarea>Realease year</textarea>
+        <textarea>Genre</textarea>
+        <form action="/admin">
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*">
+            <input type="submit">
+        </form>
+
+    </div>
+</div>
+
 
 </body>
 <script src="js/admin.js"></script>
