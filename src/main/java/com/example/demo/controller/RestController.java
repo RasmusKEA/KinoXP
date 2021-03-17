@@ -5,10 +5,7 @@ import com.example.demo.model.User;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +31,12 @@ public class RestController {
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody User user){
         return userRepository.save(user);
+    }
+
+
+    @GetMapping("/getUsername/{username}")
+    public List<User> getUsername(@PathVariable String username){
+        return userRepository.findByUsername(username);
     }
 
 

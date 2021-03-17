@@ -9,6 +9,10 @@ function createUser() {
     const passwordRepeated = document.querySelector('#rpassword');
 
     if(password.value === passwordRepeated.value){
+
+
+
+
         let newUser = {
             "firstname" : `${firstname.value}`,
             "lastname" : `${lastname.value}`,
