@@ -37,18 +37,17 @@
 
 
     <div class="registerCon">
-        <form class="registerForm" method="post">
-            <input type="text" placeholder="Firstname">
-            <input type="text" placeholder="Lastname">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Repeast password">
-            <input type="submit" class="btn btn-outline-success my-2 my-sm-0 loginBtn submitRegister" value="Register">
-        </form>
+            <input type="text" placeholder="Firstname" id="firstname">
+            <input type="text" placeholder="Lastname" id="lastname">
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password" required pattern=".*\S.*">
+            <input type="password" placeholder="Repeat password" id="rpassword" required pattern=".*\S.*">
+            <button onclick="createUser()" class="btn btn-outline-success my-2 my-sm-0 loginBtn submitRegister" id="registerBtn" value="Register">Register</button>
     </div>
 
 
 
 </body>
 <script src="js/login.js"></script>
+<script src="js/register.js"></script>
 </html>
