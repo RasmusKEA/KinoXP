@@ -39,14 +39,9 @@ public class RestController {
         return userRepository.findByUsername(username);
     }
 
-
-
-
-
     @PostMapping(value = "/createMovie", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Movie createMovie(@RequestBody Movie movie){
         return movieRepository.save(movie);
     }
-
 }
