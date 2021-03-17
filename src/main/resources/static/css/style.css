@@ -92,7 +92,7 @@ button{
 	padding-right: 5px;
 }
 
-.centerDiv{
+.centerDiv, .registerCon{
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -159,7 +159,7 @@ input[type=text], input[type=password]{
 	border-radius: 5px;
 }
 
-.loginModalBtn{
+.loginModalBtn, .submitRegister{
 	float: right;
 }
 
@@ -167,3 +167,6 @@ input[type=text], input[type=password]{
 	font-size: 15px;
 }
 
+.registerCon{
+	width: 35%;
+}
