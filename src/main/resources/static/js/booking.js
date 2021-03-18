@@ -23,22 +23,36 @@ function bookMovie(booking) {
     const bookDiv = document.querySelector('#bookDiv');
 
     const bookElement = document.createElement('div');
-    const pTitle = document.createElement('p');
-    const pReleaseYear = document.createElement('p');
+    const posterElement = document.createElement('div');
+    const descElement = document.createElement('div');
+    const pTitle = document.createElement('h1');
+    const pReleaseYear = document.createElement('span');
     const imgPoster = document.createElement('IMG');
     const spanGenre = document.createElement('span');
+    const desc = document.createElement('p');
+
+    desc.innerText = "Lorem ipsum dauda";
 
     pTitle.innerText = booking.movieTitle;
     pReleaseYear.innerText = booking.releaseYear;
     spanGenre.innerText = booking.genre;
 
-    imgPoster.setAttribute("src", `../images/${booking.image}`);
-    imgPoster.setAttribute("width", "100");
-    imgPoster.setAttribute("height", "150");
+    pReleaseYear.style.paddingRight = "10px";
 
-    bookElement.append(pTitle);
-    bookElement.append(pReleaseYear);
-    bookElement.append(imgPoster);
-    bookElement.append(spanGenre);
+    imgPoster.setAttribute("src", `../images/${booking.image}`);
+    imgPoster.setAttribute("width", "300");
+    imgPoster.setAttribute("height", "450");
+
+    posterElement.className = "posterDiv";
+    descElement.className = "descDiv";
+    spanGenre.className = "spanGenre";
+
+    posterElement.append(imgPoster);
+    bookElement.append(posterElement);
+    descElement.append(pTitle);
+    descElement.append(pReleaseYear);
+    descElement.append(spanGenre);
+    descElement.append(desc);
+    bookElement.append(descElement);
     bookDiv.append(bookElement);
 }

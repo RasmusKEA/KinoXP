@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 body{
-font-family: 'Roboto', sans-serif !important; 
+font-family: 'Roboto', sans-serif !important;
 }
 
 .logo{
@@ -53,7 +53,7 @@ button{
 	font-size: medium;
 }
 
-.movieDiv{
+.movieDiv, .bookDiv{
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -85,6 +85,12 @@ button{
 	border-radius: 5px;
 	width: 110%;
 
+}
+
+.spanGenre{
+	background-color: rgba(211,211,211, 0.3);
+	border-radius: 5px;
+	width: 110%;
 }
 
 .releaseYear{
@@ -169,4 +175,20 @@ input[type=text], input[type=password]{
 
 .registerCon{
 	width: 35%;
+}
+
+.bookDiv{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.descDiv{
+	padding-left: 15px;
+	float: right;
+}
+
+.posterDiv{
+	float: left;
 }

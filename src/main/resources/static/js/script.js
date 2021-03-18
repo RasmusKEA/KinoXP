@@ -56,7 +56,6 @@ function showMoviesShowing(movies){
     //Testing af id-retrieval
     bookBtn.onclick = function (){
       location.href = '/booking';
-      //bookingPage(movie.id);
       localStorage.setItem("movieid", movie.id);
     }
 
