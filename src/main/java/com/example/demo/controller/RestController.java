@@ -5,9 +5,11 @@ import com.example.demo.model.User;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
@@ -43,5 +45,18 @@ public class RestController {
     @ResponseStatus(HttpStatus.CREATED)
     public Movie createMovie(@RequestBody Movie movie){
         return movieRepository.save(movie);
+    }
+
+    @GetMapping("/getMovie/{id}")
+    public ResponseEntity<Movie> getBookingMovie(@PathVariable Long id){
+        Optional<Movie> movie = movieRepository.findById(id);
+        if(movie.isPresent()){
+            Movie realMovie = movie.get();
+            return new ResponseEntity<>(realMovie, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
+
     }
 }

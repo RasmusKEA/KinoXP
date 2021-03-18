@@ -55,9 +55,11 @@ function showMoviesShowing(movies){
 
     //Testing af id-retrieval
     bookBtn.onclick = function (){
-      console.log(movie.id);
-      console.log(bookBtn.value);
-    };
+      location.href = '/booking';
+      //bookingPage(movie.id);
+      localStorage.setItem("movieid", movie.id);
+    }
+
   });
 }
 

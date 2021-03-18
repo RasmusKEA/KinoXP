@@ -10,4 +10,9 @@ public class MovieController {
     public String getMovies(){
         return "movies";
     }
+
+    @GetMapping("/booking")
+    public String getBooking(){
+        return "booking";
+    }
 }
