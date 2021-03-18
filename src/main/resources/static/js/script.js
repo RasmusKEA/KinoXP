@@ -33,7 +33,7 @@ function showMoviesShowing(movies){
     bookBtn.innerHTML = "Book a ticket";
 
     //Måder at få fat i id på den film man gerne vil booke
-    bookBtn.setAttribute("value", movie.id)
+    bookBtn.setAttribute("value", movie.id);
     bookBtn.id = movie.id;
 
     imgTagPoster.setAttribute("src", `../images/${movie.image}`);
