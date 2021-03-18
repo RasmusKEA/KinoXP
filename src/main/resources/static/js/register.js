@@ -11,7 +11,7 @@ function fetchUsername(){
         redirect : "follow"
     }
 
-    let unameUrl = `http://localhost:8080/getUsername/${firstname.value}`
+    let unameUrl = `http://localhost:8080/getUsername/${username.value}`
 
     fetch(unameUrl, requestObject)
         .then(response => response.json())
@@ -63,7 +63,7 @@ function createUser(usernameChecked) {
                 .catch((error) => {
                     console.log("Error:", error)
                 });
-            //location.reload();
+            location.reload();
         }else{
             window.alert("Username already in use");
             location.reload();

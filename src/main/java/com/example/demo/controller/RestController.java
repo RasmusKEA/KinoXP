@@ -11,8 +11,8 @@ import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
-    private MovieRepository movieRepository;
-    private UserRepository userRepository;
+    private final MovieRepository movieRepository;
+    private final UserRepository userRepository;
     //Klassen her er tiltænkt at være vores RestController. Altså indeholde de metoder der skal returnere et html svar og laves om til JSON
 
 

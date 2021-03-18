@@ -39,9 +39,9 @@
     <div class="registerCon">
             <input type="text" placeholder="Firstname" id="firstname" required>
             <input type="text" placeholder="Lastname" id="lastname" required>
-            <input type="text" placeholder="Username" id="username" required pattern=".*\S.*">
-            <input type="password" placeholder="Password" id="password" required pattern=".*\S.*">
-            <input type="password" placeholder="Repeat password" id="rpassword" required pattern=".*\S.*">
+            <input type="text" placeholder="Username" id="username" required pattern="^\S+$" onkeypress="return event.charCode !== 32">
+            <input type="password" placeholder="Password" id="password" required pattern="^\S+$" onkeypress="return event.charCode !== 32">
+            <input type="password" placeholder="Repeat password" id="rpassword" required pattern="^\S+$" onkeypress="return event.charCode !== 32">
             <button onclick="fetchUsername()" class="btn btn-outline-success my-2 my-sm-0 loginBtn submitRegister" id="registerBtn" value="Register">Register</button>
     </div>
 
