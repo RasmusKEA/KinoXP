@@ -26,6 +26,7 @@ function showMoviesShowing(movies){
     const imgTagPoster = document.createElement("IMG");
     const genreTag = document.createElement('span');
     const bookBtn = document.createElement("BUTTON");
+    const br = document.createElement("br");
 
     pTagTitle.innerText = movie.movieTitle;
     pTagReleaseYear.innerText = movie.releaseYear;
@@ -36,7 +37,7 @@ function showMoviesShowing(movies){
     bookBtn.setAttribute("value", movie.id);
     bookBtn.id = movie.id;
 
-    imgTagPoster.setAttribute("src", `../images/${movie.image}`);
+    imgTagPoster.setAttribute("src", `${movie.image}`);
     imgTagPoster.setAttribute("width", "100");
     imgTagPoster.setAttribute("height", "150");
     imgTagPoster.style.paddingTop = "5px";
@@ -47,6 +48,7 @@ function showMoviesShowing(movies){
     bookBtn.className = "btn btn-outline-success my-2 my-sm-0 loginBtn bookBtn";
 
     movieElement.append(imgTagPoster);
+    movieElement.append(br);
     movieElement.append(pTagReleaseYear);
     movieElement.append(genreTag);
     movieElement.append(pTagTitle);

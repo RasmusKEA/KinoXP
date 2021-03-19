@@ -19,9 +19,20 @@
       <a class="nav-item nav-link" href="#">Contact</a>
     </div>
   </div>
-    <form class="form-inline">
-    <button class="btn btn-outline-success my-2 my-sm-0 loginBtn" type="submit">Login</button>
-  </form>
+    <button class="btn btn-outline-success my-2 my-sm-0 loginBtn" id="loginBtn" >Login</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="loginForm">
+                <input type="text" placeholder="Username" class="loginUsername">
+                <input type="password" placeholder="Password" class="loginPassword">
+                <input type="submit" class="btn btn-outline-success my-2 my-sm-0 loginBtn loginModalBtn" id="loginModalBtn" value="Login">
+                <span class="noAccText">Do you not have an account? <a class="linkToRegister" href="/register">Click here</a></span>
+            </form>
+        </div>
+    </div>
 </nav>
 
 
@@ -38,4 +49,5 @@
 
 </body>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </html>

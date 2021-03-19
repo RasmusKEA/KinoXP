@@ -15,15 +15,18 @@ public class Movie {
     private int releaseYear;
     private String genre;
     private String image;
+    private String hall;
 
     public Movie() {
     }
 
-    public Movie(String movieTitle, int releaseYear, String genre, String image) {
+    public Movie(Long id, String movieTitle, int releaseYear, String genre, String image, String hall) {
+        this.id = id;
         this.movieTitle = movieTitle;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.image = image;
+        this.hall = hall;
     }
 
     public String getImage() {
@@ -45,6 +48,16 @@ public class Movie {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+
+    public String getHall() {
+        return hall;
+    }
+
+    public void setHall(String hall) {
+        this.hall = hall;
     }
 
     public Long getId() {

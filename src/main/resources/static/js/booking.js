@@ -30,17 +30,19 @@ function bookMovie(booking) {
     const imgPoster = document.createElement('IMG');
     const spanGenre = document.createElement('span');
     const desc = document.createElement('p');
+    const hallTag = document.createElement('p')
     const bookATicket = document.createElement('BUTTON');
 
     desc.innerText = "Lorem ipsum dauda";
     pTitle.innerText = booking.movieTitle;
     pReleaseYear.innerText = booking.releaseYear;
     spanGenre.innerText = booking.genre;
+    hallTag.innerText = booking.hall;
     bookATicket.innerHTML = "Book a ticket";
 
     pReleaseYear.style.paddingRight = "10px";
 
-    imgPoster.setAttribute("src", `../images/${booking.image}`);
+    imgPoster.setAttribute("src", `${booking.image}`);
     imgPoster.setAttribute("width", "300");
     imgPoster.setAttribute("height", "450");
 
@@ -51,11 +53,14 @@ function bookMovie(booking) {
 
     posterElement.append(imgPoster);
     bookElement.append(posterElement);
+
     descElement.append(pTitle);
     descElement.append(pReleaseYear);
     descElement.append(spanGenre);
     descElement.append(desc);
+    descElement.append(hallTag);
     descElement.append(bookATicket);
+
     bookElement.append(descElement);
     bookDiv.append(bookElement);
 }
