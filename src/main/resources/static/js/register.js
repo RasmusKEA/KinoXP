@@ -63,7 +63,8 @@ function createUser(usernameChecked) {
                 .catch((error) => {
                     console.log("Error:", error)
                 });
-            location.reload();
+            window.alert("Account has been created")
+            location.href = '/';
         }else{
             window.alert("Username already in use");
             location.reload();
