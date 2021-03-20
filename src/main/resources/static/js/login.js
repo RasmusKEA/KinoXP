@@ -58,6 +58,12 @@ innerLogin.onclick = function (){
 
 function verifyUser(user, username, password){
     console.log(user, username.value, password.value);
+    if (user.length === 0){
+        window.alert("Username or password is incorrect or doesn't match");
+        username.value = '';
+        password.value = '';
+        
+    }
     user.forEach(
         user => {
             if (username.value.trim() === user.username.trim() && password.value.trim() === user.password.trim()){
