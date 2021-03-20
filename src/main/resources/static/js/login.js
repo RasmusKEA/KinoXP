@@ -28,16 +28,46 @@ let innerLogin = document.getElementById("innerLogin");
 let outerLogin = document.getElementById("loginBtn");
 let profileBtn = document.getElementById("profileBtn");
 
+
+
 innerLogin.onclick = function (){
+
+        let username = document.getElementById("loginUsername");
+        let password = document.getElementById("loginPassword");
+
+        const requestObject = {
+            method : "GET",
+            "content-type" : "application/json",
+            redirect : "follow"
+        }
+
+        let unameUrl = `http://localhost:8080/getUsername/${username.value}`
+
+        fetch(unameUrl, requestObject)
+            .then(response => response.json())
+            .then(data => verifyUser(data, username, password));
+
+
     //fetch en user baseret på brugernavn
     //if user.username og user.password mathcer loginPassword og loginUsername
     //document.getElementByID("loginPassword") og det samme for brugernavn
     //matcher de, så sættes localstorage til user.id som nedenfor
     //localStorage.setItem("userid", `${user.id}`);
 
-    localStorage.setItem("userid", "123");
-    location.reload();
 }
+
+function verifyUser(user, username, password){
+    console.log(user, username.value, password.value);
+    user.forEach(
+        user => {
+            if (username.value.trim() === user.username.trim() && password.value.trim() === user.password.trim()){
+                localStorage.setItem("userid", `${user.id}`);
+                location.reload();
+            }
+        }
+    )
+}
+
 
 let prfBtn = document.createElement("BUTTON");
 
