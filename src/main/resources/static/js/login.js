@@ -23,3 +23,39 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+let innerLogin = document.getElementById("innerLogin");
+let outerLogin = document.getElementById("loginBtn");
+let profileBtn = document.getElementById("profileBtn");
+
+innerLogin.onclick = function (){
+    //fetch en user baseret på brugernavn
+    //if user.username og user.password mathcer loginPassword og loginUsername
+    //document.getElementByID("loginPassword") og det samme for brugernavn
+    //matcher de, så sættes localstorage til user.id som nedenfor
+    //localStorage.setItem("userid", `${user.id}`);
+
+    localStorage.setItem("userid", "123");
+    location.reload();
+}
+
+let prfBtn = document.createElement("BUTTON");
+
+window.onload = function (){
+    if(localStorage.getItem("userid") == null){
+        outerLogin.value = "Login";
+        outerLogin.innerHTML = "Login";
+    }else{
+
+        outerLogin.hidden = true;
+        const nav = document.getElementById("test");
+        prfBtn.setAttribute("id", "profileBtn");
+        prfBtn.className = "btn btn-outline-success my-2 my-sm-0 loginBtn";
+        prfBtn.innerHTML = "Profile";
+        nav.append(prfBtn);
+    }
+}
+
+prfBtn.onclick = function (){
+    location.href = '/profile';
+}

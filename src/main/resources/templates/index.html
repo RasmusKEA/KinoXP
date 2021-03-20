@@ -9,7 +9,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="test">
     <a class="navbar-brand logo" href="/">
     <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top logo" alt="" >
     KINO XP
@@ -21,16 +21,16 @@
       <a class="nav-item nav-link" href="#">Contact</a>
     </div>
   </div>
-    <button class="btn btn-outline-success my-2 my-sm-0 loginBtn" id="loginBtn" >Login</button>
+    <button class="btn btn-outline-success my-2 my-sm-0 loginBtn" id="loginBtn"></button>
         <!-- The Modal -->
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <form class="loginForm">
-                    <input type="text" placeholder="Username" class="loginUsername">
-                    <input type="password" placeholder="Password" class="loginPassword">
-                    <input type="submit" class="btn btn-outline-success my-2 my-sm-0 loginBtn loginModalBtn" value="Login">
+                    <input type="text" placeholder="Username" class="loginUsername" id="loginUsername">
+                    <input type="password" placeholder="Password" class="loginPassword" id="loginPassword">
+                    <input type="submit" class="btn btn-outline-success my-2 my-sm-0 loginBtn loginModalBtn" id="innerLogin" value="Login">
                     <span class="noAccText">Do you not have an account? <a class="linkToRegister" href="/register">Click here</a></span>
                 </form>
             </div>
