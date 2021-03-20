@@ -2,10 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
     <title>PROFILE</title>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="test">
+    <a class="navbar-brand logo" href="/">
+        <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top logo" alt="" >
+        KINO XP
+    </a>
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/movies">Movies</a>
+            <a class="nav-item nav-link" href="#">About</a>
+            <a class="nav-item nav-link" href="#">Contact</a>
+        </div>
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0 loginBtn" id="loginBtn"></button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="loginForm">
+                <input type="text" placeholder="Username" class="loginUsername" id="loginUsername">
+                <input type="password" placeholder="Password" class="loginPassword" id="loginPassword">
+                <input type="submit" class="btn btn-outline-success my-2 my-sm-0 loginBtn loginModalBtn" id="innerLogin" value="Login">
+                <span class="noAccText">Do you not have an account? <a class="linkToRegister" href="/register">Click here</a></span>
+            </form>
+        </div>
+    </div>
+</nav>
 </body>
+<script src="js/login.js"></script>
 <script src="js/profile.js"></script>
 </html>
