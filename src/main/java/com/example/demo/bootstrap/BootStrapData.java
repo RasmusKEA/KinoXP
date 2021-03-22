@@ -1,20 +1,34 @@
 package com.example.demo.bootstrap;
 
 import com.example.demo.model.Movie;
+import com.example.demo.model.User;
 import com.example.demo.repository.MovieRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
     private final MovieRepository movieRepository;
+    private final UserRepository userRepository;
 
-    public BootStrapData(MovieRepository movieRepository) {
+    public BootStrapData(MovieRepository movieRepository, UserRepository userRepository) {
+        this.userRepository = userRepository;
         this.movieRepository = movieRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        User user = new User();
+        user.setFirstname("R");
+        user.setLastname("T");
+        user.setUsername("rtBio");
+        user.setPassword("kode");
+        user.setBookedMovies("1");
+        userRepository.save(user);
+
+
+
         Movie movie = new Movie();
         movie.setMovieTitle("Rejsen til Saturn");
         movie.setGenre("Komedie");

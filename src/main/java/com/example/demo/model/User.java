@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstname, lastname, username, password;
+    private String firstname, lastname, username, password, bookedMovies;
 
     public User() {
     }
@@ -31,12 +31,21 @@ public class User {
         return Objects.hash(id);
     }
 
-    public User(Long id, String firstname, String lastname, String username, String password) {
+    public User(Long id, String firstname, String lastname, String username, String password, String bookedMovies) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         this.password = password;
+        this.bookedMovies = bookedMovies;
+    }
+
+    public String getBookedMovies() {
+        return bookedMovies;
+    }
+
+    public void setBookedMovies(String bookedMovies) {
+        this.bookedMovies = bookedMovies;
     }
 
     public Long getId() {
