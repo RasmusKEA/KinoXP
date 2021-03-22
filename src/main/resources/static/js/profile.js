@@ -1,1 +1,1 @@
-console.log(localStorage.getItem("userid"));
+let userid = localStorage.getItem("userid");

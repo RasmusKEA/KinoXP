@@ -9,9 +9,9 @@ const requestObject = {
 
 function bookingPage(movieID){
 
-   fetch(`http://localhost:8080/getMovie/${movieID}`, requestObject)
-            .then(response => response.json())
-            .then(booking => bookMovie(booking));
+    fetch(`http://localhost:8080/getMovie/${movieID}`, requestObject)
+        .then(response => response.json())
+        .then(booking => bookMovie(booking));
 
 }
 
@@ -79,7 +79,7 @@ bookATicket.onclick = function (){
     function postman(user){
         let bmUpdate;
         if(user.bookedMovies === 'null' || user.bookedMovies === null){
-            bmUpdate = `${movieID}, `
+            bmUpdate = `${movieID}`
         }else{
             bmUpdate = `${user.bookedMovies}, ${movieID}`;
         }
@@ -105,6 +105,8 @@ bookATicket.onclick = function (){
             body: body
         };
 
+
+
         if(user.bookedMovies === null || user.bookedMovies === "null"){
             fetch(URL, requestOptions)
                 .then(response => response.json())
@@ -115,9 +117,11 @@ bookATicket.onclick = function (){
                     console.log("Error:", error)
                 });
 
-        }else{
-            let movieArr = user.bookedMovies.trim().split(",");
-            if(movieArr.includes(user.bookedMovies)){
+        }else if(user.bookedMovies !== null){
+
+            let movieArr = user.bookedMovies.replace(/\s+/g,'').split(',');
+
+            if(!movieArr.includes(bookATicket.id)){
                 fetch(URL, requestOptions)
                     .then(response => response.json())
                     .then(data => {
@@ -130,12 +134,5 @@ bookATicket.onclick = function (){
                 window.alert("er der allerede lak shu hvor meget vil du se")
             }
         }
-
-
     }
-
-
-
-
-
 }

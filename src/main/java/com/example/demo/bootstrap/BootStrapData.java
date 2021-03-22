@@ -22,9 +22,9 @@ public class BootStrapData implements CommandLineRunner {
         User user = new User();
         user.setFirstname("R");
         user.setLastname("T");
-        user.setUsername("rtBio");
+        user.setUsername("rtbio");
         user.setPassword("kode");
-        user.setBookedMovies("2, ");
+        user.setBookedMovies("2");
         userRepository.save(user);
 
 
