@@ -56,7 +56,26 @@ public class RestController {
         }else{
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
+    }
 
+    @PostMapping(value = "/updateBookedMovies", consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User updateBookedMovies(@RequestBody User user){
+        return userRepository.save(user);
+    }
+
+    @GetMapping("/getUserById/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            User realUser = user.get();
+            return new ResponseEntity<>(realUser, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
 
     }
+
+
+
 }

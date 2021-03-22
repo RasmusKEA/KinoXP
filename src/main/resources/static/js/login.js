@@ -68,6 +68,7 @@ function verifyUser(user, username, password){
         user => {
             if (username.value.trim() === user.username.trim() && password.value.trim() === user.password.trim()){
                 localStorage.setItem("userid", `${user.id}`);
+                localStorage.setItem("username", `${user.username}`)
                 location.reload();
             }
         }

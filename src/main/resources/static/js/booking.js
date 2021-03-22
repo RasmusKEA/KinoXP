@@ -1,4 +1,5 @@
 let movieID = localStorage.getItem("movieid");
+let userid = localStorage.getItem("userid");
 
 const requestObject = {
     method : "GET",
@@ -16,9 +17,9 @@ function bookingPage(movieID){
 
 bookingPage(movieID);
 
+let bookATicket = document.createElement('BUTTON');
 
 function bookMovie(booking) {
-
     console.log(booking);
     const bookDiv = document.querySelector('#bookDiv');
 
@@ -31,7 +32,7 @@ function bookMovie(booking) {
     const spanGenre = document.createElement('span');
     const desc = document.createElement('p');
     const hallTag = document.createElement('p')
-    const bookATicket = document.createElement('BUTTON');
+
 
     desc.innerText = "Lorem ipsum dauda";
     pTitle.innerText = booking.movieTitle;
@@ -39,6 +40,7 @@ function bookMovie(booking) {
     spanGenre.innerText = booking.genre;
     hallTag.innerText = booking.hall;
     bookATicket.innerHTML = "Book a ticket";
+    bookATicket.setAttribute("id", booking.id);
 
     pReleaseYear.style.paddingRight = "10px";
 
@@ -63,4 +65,77 @@ function bookMovie(booking) {
 
     bookElement.append(descElement);
     bookDiv.append(bookElement);
+
+}
+
+
+bookATicket.onclick = function (){
+    //lav noget der tjekker om denne film er på brugerens liste inden, sådan at man kan disable knappen
+
+    fetch(`http://localhost:8080/getUserById/${userid}`, requestObject)
+        .then(response => response.json())
+        .then(user => postman(user));
+
+    function postman(user){
+        let bmUpdate;
+        if(user.bookedMovies === 'null' || user.bookedMovies === null){
+            bmUpdate = `${movieID}, `
+        }else{
+            bmUpdate = `${user.bookedMovies}, ${movieID}`;
+        }
+
+
+        let newUser = {
+            "id" : `${userid}`,
+            "firstname" : `${user.firstname}`,
+            "lastname" : `${user.lastname}`,
+            "username" : `${user.username}`,
+            "password" : `${user.password}`,
+            "bookedMovies" : bmUpdate
+        };
+
+        let body = JSON.stringify(newUser);
+        const URL = "http://localhost:8080/createUser";
+
+        const requestOptions = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: "POST",
+            body: body
+        };
+
+        if(user.bookedMovies === null || user.bookedMovies === "null"){
+            fetch(URL, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("success", data)
+                })
+                .catch((error) => {
+                    console.log("Error:", error)
+                });
+
+        }else{
+            let movieArr = user.bookedMovies.trim().split(",");
+            if(movieArr.includes(user.bookedMovies)){
+                fetch(URL, requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("success", data)
+                    })
+                    .catch((error) => {
+                        console.log("Error:", error)
+                    });
+            }else{
+                window.alert("er der allerede lak shu hvor meget vil du se")
+            }
+        }
+
+
+    }
+
+
+
+
+
 }
