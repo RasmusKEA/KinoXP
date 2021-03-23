@@ -35,17 +35,31 @@ function profileView(movie) {
     const tableRow = document.createElement("tr");
     const tableData = document.createElement("td");
     const tableData1 = document.createElement("td");
+    const tableData2 = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    const editButton = document.createElement("button");
 
     tableHead.innerText = movie.movieTitle;
     tableData.innerText = movie.genre;
     tableData1.innerText = movie.releaseYear;
 
+    deleteButton.className = "btn btn-outline-success my-2 my-sm-0 loginBtn deleteBtn";
+    editButton.className = "btn btn-outline-success my-2 my-sm-0 loginBtn editBtn";
+
+    deleteButton.innerHTML = "Delete";
+    editButton.innerHTML = "Edit";
+
+    deleteButton.setAttribute("id", movie.id);
+    editButton.setAttribute("id", movie.id);
+
+    tableData2.append(editButton);
+    tableData2.append(deleteButton);
     tableRow.append(tableHead);
     tableRow.append(tableData);
     tableRow.append(tableData1);
+    tableRow.append(tableData2);
     tableDiv.append(tableRow);
 
 
-
-
+    
 }

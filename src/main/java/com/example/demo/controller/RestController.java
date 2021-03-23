@@ -4,6 +4,7 @@ import com.example.demo.model.Movie;
 import com.example.demo.model.User;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.UserRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -74,6 +75,16 @@ public class RestController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    @PostMapping(value = "/deleteBooking/{id}", consumes = "application/json")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBooking(@PathVariable Long id){
+        try {
+            movieRepository.deleteById(id);
+        }catch (EmptyResultDataAccessException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
 

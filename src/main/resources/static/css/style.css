@@ -193,3 +193,16 @@ input[type=text], input[type=password]{
 .posterDiv{
 	float: left;
 }
+
+
+.deleteBtn{
+	border: 1px solid #b30000 !important;
+	color: #b30000;
+	background-color: transparent;
+	transition-duration: 0.5s;
+	margin-left: 15px;
+}
+
+.deleteBtn:hover{
+	background-color: #b30000;
+}
