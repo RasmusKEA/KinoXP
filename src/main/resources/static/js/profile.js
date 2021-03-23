@@ -19,12 +19,14 @@ function loadProfile(user){
 
         fetch(`http://localhost:8080/getMovie/${movie}`, requestObject)
             .then(response => response.json())
-            .then(booking => profileView(booking));
-
-
+            .then(booking => {
+                if(booking.movieTitle === "" || booking.movieTitle === undefined){
+                    return;
+                }else{
+                    profileView(booking);
+                }
+            });
     } )
-
-
 }
 
 function profileView(movie) {
@@ -60,6 +62,20 @@ function profileView(movie) {
     tableRow.append(tableData2);
     tableDiv.append(tableRow);
 
+    deleteButton.onclick = function(){
+        fetch(`http://localhost:8080/getUserById/${userid}`, requestObject)
+            .then(response => response.json())
+            .then(user => postman(user));
 
-    
+        function postman(user) {
+            let oldMovies = user.bookedMovies;
+            let movieIDdelete = deleteButton.id;
+            console.log("Fjern: " + movieIDdelete + " fra : " + oldMovies);
+            let newMovies = oldMovies.replace(movieIDdelete, "");
+            console.log(newMovies);
+        }
+
+    }
 }
+
+

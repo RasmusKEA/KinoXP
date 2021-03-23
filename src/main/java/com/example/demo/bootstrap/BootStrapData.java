@@ -24,7 +24,7 @@ public class BootStrapData implements CommandLineRunner {
         user.setLastname("T");
         user.setUsername("rtbio");
         user.setPassword("kode");
-        user.setBookedMovies("2");
+        user.setBookedMovies("2, 1, 3");
         userRepository.save(user);
 
 
