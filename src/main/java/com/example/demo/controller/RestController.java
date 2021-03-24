@@ -77,15 +77,7 @@ public class RestController {
 
     }
 
-    @PostMapping(value = "/deleteBooking/{id}", consumes = "application/json")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBooking(@PathVariable Long id){
-        try {
-            movieRepository.deleteById(id);
-        }catch (EmptyResultDataAccessException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
+
 
 
 

@@ -73,9 +73,46 @@ function profileView(movie) {
             console.log("Fjern: " + movieIDdelete + " fra : " + oldMovies);
             let newMovies = oldMovies.replace(movieIDdelete, "");
             console.log(newMovies);
+
+
+            let newUser = {
+                "id" : `${userid}`,
+                "firstname" : `${user.firstname}`,
+                "lastname" : `${user.lastname}`,
+                "username" : `${user.username}`,
+                "password" : `${user.password}`,
+                "bookedMovies" : newMovies
+            };
+
+            let body = JSON.stringify(newUser);
+            const URL = "http://localhost:8080/updateBookedMovies";
+
+            const requestOptions = {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: "POST",
+                body: body
+            };
+
+            fetch(URL, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("success", data)
+                })
+                .catch((error) => {
+                    console.log("Error:", error)
+                });
+            location.reload();
+
         }
 
+
+
+
     }
+
+
 }
 
 

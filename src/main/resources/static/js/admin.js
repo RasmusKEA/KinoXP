@@ -36,7 +36,7 @@ function createMovie() {
         "image": `${image.value}`
     };
 
-    const minurl = "http://localhost:8080/createMovie"
+    const minurl = "http://localhost:8080/deleteMovie"
 
     let body = JSON.stringify(newMovie);
 
