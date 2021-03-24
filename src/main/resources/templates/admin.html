@@ -23,6 +23,10 @@
 
 <div class="container createMovieDiv">
     <div class="centerDiv">
+        <select id="movies">
+            <option disabled selected>Select movie</option>
+        </select>
+        <button type="button" id="editBtn" class="btn btn-outline-success my-2 my-sm-0 loginBtn editBtn">Edit movie</button>
         <button type="button" id="myBtn" class="btn btn-outline-success my-2 my-sm-0 loginBtn createBtn">Create movie</button>
     </div>
 </div>
@@ -36,6 +40,19 @@
         <input type="text" placeholder="image (insert direct poster link)" id="image">
 
         <button type="submit" onclick="createMovie()" class="btn btn-outline-success my-2 my-sm-0 loginBtn">Create</button>
+
+    </div>
+</div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close1">&times;</span>
+        <input type="text" placeholder="Movietitle" id="movietitleEdit">
+        <input type="text" placeholder="Genre" id="genreEdit">
+        <input type="text" placeholder="Releaseyear" id="releaseyearEdit">
+        <input type="text" placeholder="image (insert direct poster link)" id="imageEdit">
+
+        <button type="submit" onclick="editMovie()" class="btn btn-outline-success my-2 my-sm-0 loginBtn">Create</button>
 
     </div>
 </div>
