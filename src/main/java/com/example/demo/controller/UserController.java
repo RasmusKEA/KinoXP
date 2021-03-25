@@ -14,4 +14,9 @@ public class UserController {
     public String getProfile(){
         return "profile";
     }
+
+    @GetMapping("/allbookings")
+    public String getAllBookings(){
+        return "allbookings";
+    }
 }

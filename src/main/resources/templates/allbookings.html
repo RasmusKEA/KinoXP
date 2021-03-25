@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <link href="css/bootstrap.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
-    <title>PROFILE</title>
+    <title>KINO XP</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="test">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand logo" href="/">
-        <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top logo" alt="" >
+        <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top logo" alt="">
         KINO XP
     </a>
     <div class="collapse navbar-collapse">
@@ -19,18 +19,20 @@
             <a class="nav-item nav-link" href="#">Contact</a>
         </div>
     </div>
-    <button class="btn btn-outline-success my-2 my-sm-0  logoutBtn" id="logoutBtn">Logout</button>
 </nav>
+
+<button class="btn btn-outline-success my-2 my-sm-0 loginBtn" id="administration">Administration</button>
 
 <div class="container-fluid">
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Hall</th>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Movie ID</th>
+            <th scope="col">Movie title</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Booked by userID</th>
         </tr>
         </thead>
         <tbody id="tablebody">
@@ -38,18 +40,7 @@
     </table>
 </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <input type="date" id="dateEdit">
-        <button type="submit" id="editSubmitBtn" class="btn btn-outline-success my-2 my-sm-0 loginBtn">Submit edit</button>
-    </div>
-</div>
-
-
-
 </body>
-<script src="js/profile.js"></script>
+<script src="js/allbookings.js"></script>
+
 </html>

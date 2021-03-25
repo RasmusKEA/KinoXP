@@ -32,6 +32,10 @@ close.onclick = function() {
     modal1.style.display = "none";
 }
 
+function allBookings(){
+    location.href = "/allbookings"
+}
+
 function getSingleMovie(idMovie){
     const requestObject = {
         method : "GET",
@@ -158,9 +162,6 @@ function verifyTimeslot(movies){
         }
 
     }
-
-
-
 }
 
 const requestObject = {
@@ -186,8 +187,6 @@ function populateSelect(movie){
     })
 }
 
-
-//SØRG FOR AT NÅR MAN SUBMITTER EDIT SÅ SKAL MAN LIGE VÆLGE HALL OG TIMESLOT
 function editMovie(){
     const movieId = document.getElementById('movies');
     const movietitleEdit = document.querySelector('#movietitleEdit');

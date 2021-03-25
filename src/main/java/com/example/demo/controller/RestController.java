@@ -108,4 +108,12 @@ public class RestController {
         return bookingRepository.save(booking);
     }
 
+    @GetMapping("/getAllBookings")
+    public List<Booking> getAllBookings() {
+        List<Booking> bookings = bookingRepository.findAll();
+        return bookings;
+    }
+
+
+
 }
