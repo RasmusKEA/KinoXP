@@ -1,20 +1,27 @@
 package com.example.demo.bootstrap;
 
+import com.example.demo.model.Booking;
 import com.example.demo.model.Movie;
 import com.example.demo.model.User;
+import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.awt.print.Book;
+
 @Component
 public class BootStrapData implements CommandLineRunner {
     private final MovieRepository movieRepository;
     private final UserRepository userRepository;
+    private final BookingRepository bookingRepository;
 
-    public BootStrapData(MovieRepository movieRepository, UserRepository userRepository) {
+
+    public BootStrapData(MovieRepository movieRepository, UserRepository userRepository, BookingRepository bookingRepository) {
         this.userRepository = userRepository;
         this.movieRepository = movieRepository;
+        this.bookingRepository =bookingRepository;
     }
 
     @Override
@@ -26,6 +33,37 @@ public class BootStrapData implements CommandLineRunner {
         user.setPassword("kode");
         user.setBookedMovies("2, 1, 3");
         userRepository.save(user);
+
+        Booking booking = new Booking();
+        booking.setUserid(1);
+        booking.setMovieid(1);
+        booking.setDate("2021-03-25");
+        booking.setMovieHall("Small hall");
+        booking.setMovieTitle("Rejsen til Saturn");
+        booking.setMovieTimeslot("14-16");
+
+        Booking booking1 = new Booking();
+        booking1.setUserid(1);
+        booking1.setMovieid(2);
+        booking1.setDate("2021-03-25");
+        booking1.setMovieHall("Large hall");
+        booking1.setMovieTitle("Kong vs Godzilla");
+        booking1.setMovieTimeslot("22-24");
+
+
+        Booking booking2 = new Booking();
+        booking2.setUserid(1);
+        booking2.setMovieid(3);
+        booking2.setDate("2021-03-25");
+        booking2.setMovieHall("Small hall");
+        booking2.setMovieTitle("Terkel i Knibe");
+        booking2.setMovieTimeslot("20-22");
+
+        bookingRepository.save(booking2);
+
+        bookingRepository.save(booking1);
+
+        bookingRepository.save(booking);
 
 
 

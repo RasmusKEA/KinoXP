@@ -33,15 +33,24 @@ function bookMovie(booking) {
     const desc = document.createElement('p');
     const hallTag = document.createElement('p')
     const date = document.createElement("INPUT");
+    const timeslot = document.createElement('p');
+
+    timeslot.innerText = ` ${booking.timeslot}`;
 
     date.setAttribute("type", "date");
+    date.id = "dateElm";
     desc.innerText = "Lorem ipsum dauda";
     pTitle.innerText = booking.movieTitle;
+    pTitle.id = "movieTitleID"
     pReleaseYear.innerText = booking.releaseYear;
     spanGenre.innerText = booking.genre;
-    hallTag.innerText = `In ${booking.hall} at ${booking.timeslot}`;
+    hallTag.innerText = `${booking.hall}`;
     bookATicket.innerHTML = "Book a ticket";
     bookATicket.setAttribute("id", booking.id);
+
+    hallTag.id = "hallTag";
+    timeslot.id = "timeslot";
+
 
     pReleaseYear.style.paddingRight = "10px";
 
@@ -63,6 +72,7 @@ function bookMovie(booking) {
     descElement.append(spanGenre);
     descElement.append(desc);
     descElement.append(hallTag);
+    descElement.append(timeslot);
     descElement.append(date);
     descElement.append(bookATicket);
 
@@ -75,30 +85,20 @@ function bookMovie(booking) {
 bookATicket.onclick = function (){
     //lav noget der tjekker om denne film er på brugerens liste inden, sådan at man kan disable knappen
 
-    fetch(`http://localhost:8080/getUserById/${userid}`, requestObject)
-        .then(response => response.json())
-        .then(user => postman(user));
-
-    function postman(user){
-        let bmUpdate;
-        if(user.bookedMovies === 'null' || user.bookedMovies === null){
-            bmUpdate = `${movieID}`
-        }else{
-            bmUpdate = `${user.bookedMovies}, ${movieID}`;
-        }
-
-
-        let newUser = {
-            "id" : `${userid}`,
-            "firstname" : `${user.firstname}`,
-            "lastname" : `${user.lastname}`,
-            "username" : `${user.username}`,
-            "password" : `${user.password}`,
-            "bookedMovies" : bmUpdate
+    if(document.getElementById("dateElm").value === "" || document.getElementById("dateElm").value === null){
+        window.alert("Please select a date");
+    }else{
+        let newBooking = {
+            "userid" : `${userid}`,
+            "date" : `${document.getElementById("dateElm").value}`,
+            "movieid" : `${movieID}`,
+            "movieTitle" : `${document.getElementById("movieTitleID").innerHTML}`,
+            "movieHall" : `${document.getElementById("hallTag").innerHTML}`,
+            "movieTimeslot" : `${document.getElementById("timeslot").innerHTML}`
         };
 
-        let body = JSON.stringify(newUser);
-        const URL = "http://localhost:8080/createUser";
+        let body = JSON.stringify(newBooking);
+        const URL = "http://localhost:8080/newBooking";
 
         const requestOptions = {
             headers: {
@@ -108,34 +108,17 @@ bookATicket.onclick = function (){
             body: body
         };
 
-
-
-        if(user.bookedMovies === null || user.bookedMovies === "null"){
-            fetch(URL, requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    console.log("success", data)
-                })
-                .catch((error) => {
-                    console.log("Error:", error)
-                });
-
-        }else if(user.bookedMovies !== null){
-
-            let movieArr = user.bookedMovies.replace(/\s+/g,'').split(',');
-
-            if(!movieArr.includes(bookATicket.id)){
-                fetch(URL, requestOptions)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log("success", data)
-                    })
-                    .catch((error) => {
-                        console.log("Error:", error)
-                    });
-            }else{
-                window.alert("er der allerede lak shu hvor meget vil du se")
-            }
-        }
+        fetch(URL, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log("success", data)
+            })
+            .catch((error) => {
+                console.log("Error:", error)
+            });
     }
+
+
+
+
 }

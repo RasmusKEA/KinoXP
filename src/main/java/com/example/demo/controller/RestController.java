@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Booking;
 import com.example.demo.model.Movie;
 import com.example.demo.model.User;
+import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.MovieRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,12 +19,14 @@ import java.util.Optional;
 public class RestController {
     private final MovieRepository movieRepository;
     private final UserRepository userRepository;
+    private final BookingRepository bookingRepository;
     //Klassen her er tiltænkt at være vores RestController. Altså indeholde de metoder der skal returnere et html svar og laves om til JSON
 
 
-    public RestController(MovieRepository movieRepository, UserRepository userRepository) {
+    public RestController(MovieRepository movieRepository, UserRepository userRepository, BookingRepository bookingRepository) {
         this.movieRepository = movieRepository;
         this.userRepository = userRepository;
+        this.bookingRepository = bookingRepository;
     }
 
     @GetMapping("/getAllMovies")
@@ -82,5 +87,24 @@ public class RestController {
     public String deleteMovie(@PathVariable Long id){
         movieRepository.deleteById(id);
         return "Movie deleted successfully";
+    }
+
+    @GetMapping("/bookings/{userid}")
+    public List<Booking> getByUserid(@PathVariable Integer userid) {
+        return bookingRepository.findByUserid(userid);
+    }
+
+
+    @RequestMapping(value = "/deleteBooking/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deleteBooking(@PathVariable Long id){
+        bookingRepository.deleteById(id);
+        return "Movie deleted successfully";
+    }
+
+    @PostMapping(value = "/newBooking", consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Booking newBooking(@RequestBody Booking booking) {
+        return bookingRepository.save(booking);
     }
 }
