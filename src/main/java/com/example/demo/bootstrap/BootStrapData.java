@@ -35,6 +35,7 @@ public class BootStrapData implements CommandLineRunner {
         movie.setReleaseYear(2006);
         movie.setImage("https://m.media-amazon.com/images/M/MV5BNDQ2NjIzNDMtMGZjOS00ZGIwLThiYTktM2JiN2E4MTIyZTdhXkEyXkFqcGdeQXVyNjY0ODg0MTA@._V1_.jpg");
         movie.setHall("Small hall");
+        movie.setTimeslot("14-16");
 
 
         Movie movie1 = new Movie();
@@ -43,6 +44,7 @@ public class BootStrapData implements CommandLineRunner {
         movie1.setReleaseYear(2006);
         movie1.setImage("https://upload.wikimedia.org/wikipedia/en/6/63/Godzilla_vs._Kong.png");
         movie1.setHall("Large hall");
+        movie1.setTimeslot("22-24");
 
 
         Movie movie2 = new Movie();
@@ -51,6 +53,7 @@ public class BootStrapData implements CommandLineRunner {
         movie2.setReleaseYear(2006);
         movie2.setImage("https://prod.cdn.bbaws.net/TDC_Blockbuster_-_Production/84/396/EG-273_po-reg-medium_orig-1576227034165.jpg");
         movie2.setHall("Small hall");
+        movie2.setTimeslot("20-22");
 
         movieRepository.save(movie);
         movieRepository.save(movie1);
