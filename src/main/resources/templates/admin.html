@@ -34,12 +34,28 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <input type="text" placeholder="Movietitle" id="movietitle">
-        <input type="text" placeholder="Genre" id="genre">
-        <input type="text" placeholder="Releaseyear" id="releaseyear">
-        <input type="text" placeholder="image (insert direct poster link)" id="image">
+            <input type="text" placeholder="Movietitle" id="movietitle">
+            <input type="text" placeholder="Genre" id="genre">
+            <input type="text" placeholder="Releaseyear" id="releaseyear">
+            <select id="hall" required>
+                <option disabled="" selected="">Select hall</option>
+                <option>Large hall</option>
+                <option>Small hall</option>
+            </select>
 
-        <button type="submit" onclick="createMovie()" class="btn btn-outline-success my-2 my-sm-0 loginBtn">Create</button>
+            <select id="timeslot" required>
+                <option disabled="" selected="">Select timeslot</option>
+                <option>14-16</option>
+                <option>16-18</option>
+                <option>18-20</option>
+                <option>20-22</option>
+                <option>22-24</option>
+            </select>
+
+            <input type="text" placeholder="image (insert direct poster link)" id="image">
+
+            <button type="submit" onclick="createMovie()" class="btn btn-outline-success my-2 my-sm-0 loginBtn">Create</button>
+
 
     </div>
 </div>

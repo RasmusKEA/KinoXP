@@ -16,17 +16,27 @@ public class Movie {
     private String genre;
     private String image;
     private String hall;
+    private String timeslot;
 
     public Movie() {
     }
 
-    public Movie(Long id, String movieTitle, int releaseYear, String genre, String image, String hall) {
+    public Movie(Long id, String movieTitle, int releaseYear, String genre, String image, String hall, String timeslot) {
         this.id = id;
         this.movieTitle = movieTitle;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.image = image;
         this.hall = hall;
+        this.timeslot = timeslot;
+    }
+
+    public String getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(String timeslot) {
+        this.timeslot = timeslot;
     }
 
     public String getImage() {
