@@ -190,6 +190,29 @@ function deleteMovie(){
         "id": `${movieId.value}`,
     };
 
+    const minurl = `http://localhost:8080/deleteMovie/${movieId.value}`
+
+    let body = JSON.stringify(movieToDelete);
+
+
+    const requestOptions = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: "DELETE",
+        body: body
+    };
+
+    fetch(minurl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log("success", data)
+        })
+        .catch((error) => {
+            console.log("Error:", error)
+        });
+
+    location.reload();
     
 }
 
