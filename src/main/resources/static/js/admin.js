@@ -50,7 +50,9 @@ function populateEditModal(movie){
     const hall = document.getElementById("hallEdit")
     const releaseYear = document.getElementById("releaseyearEdit");
     const img = document.getElementById("imageEdit");
+    const timeslot = document.getElementById("timeslotEdit");
 
+    timeslot.value = movie.timeslot;
     title.value = movie.movieTitle;
     genre.value = movie.genre;
     hall.value = movie.hall;
@@ -185,7 +187,7 @@ function populateSelect(movie){
 }
 
 
-
+//SØRG FOR AT NÅR MAN SUBMITTER EDIT SÅ SKAL MAN LIGE VÆLGE HALL OG TIMESLOT
 function editMovie(){
     const movieId = document.getElementById('movies');
     const movietitleEdit = document.querySelector('#movietitleEdit');
@@ -193,6 +195,7 @@ function editMovie(){
     const hallEdit = document.querySelector('#hallEdit');
     const releaseyearEdit = document.querySelector('#releaseyearEdit');
     const imageEdit = document.querySelector('#imageEdit');
+    const timeslotEdit = document.querySelector("#timeslotEdit");
 
 
     let newMovie = {
@@ -200,6 +203,7 @@ function editMovie(){
         "movieTitle": `${movietitleEdit.value}`,
         "releaseYear": `${releaseyearEdit.value}`,
         "hall": `${hallEdit.value}`,
+        "timeslot" : `${timeslotEdit.value}`,
         "genre": `${genreEdit.value}`,
         "image": `${imageEdit.value}`
     };
@@ -227,16 +231,6 @@ function editMovie(){
         });
 
     location.reload();
-
-}
-
-function deleteMovie(){
-    const movieId = document.getElementById('movies');
-
-    let movieToDelete = {
-        "id": `${movieId.value}`,
-    };
-
 
 }
 

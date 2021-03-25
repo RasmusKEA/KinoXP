@@ -107,4 +107,5 @@ public class RestController {
     public Booking newBooking(@RequestBody Booking booking) {
         return bookingRepository.save(booking);
     }
+
 }

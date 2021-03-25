@@ -19,20 +19,7 @@
             <a class="nav-item nav-link" href="#">Contact</a>
         </div>
     </div>
-    <button class="btn btn-outline-success my-2 my-sm-0 loginBtn" id="loginBtn"></button>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
 
-                <input type="text" placeholder="Username" class="loginUsername" id="loginUsername">
-                <input type="password" placeholder="Password" class="loginPassword" id="loginPassword">
-                <input type="submit" class="btn btn-outline-success my-2 my-sm-0 loginBtn loginModalBtn" id="innerLogin" value="Login">
-                <span class="noAccText">Do you not have an account? <a class="linkToRegister" href="/register">Click here</a></span>
-
-        </div>
-    </div>
 </nav>
 
 <div class="container-fluid">
@@ -41,6 +28,7 @@
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Hall</th>
+            <th scope="col">Date</th>
             <th scope="col">Time</th>
             <th scope="col">Actions</th>
         </tr>
@@ -50,7 +38,19 @@
     </table>
 </div>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <input type="date" id="dateEdit">
+        <button type="submit" id="editSubmitBtn" class="btn btn-outline-success my-2 my-sm-0 loginBtn">Submit edit</button>
+
+    </div>
+</div>
+
+
+
 </body>
-<script src="js/login.js"></script>
 <script src="js/profile.js"></script>
 </html>

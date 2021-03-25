@@ -60,9 +60,7 @@ public class BootStrapData implements CommandLineRunner {
         booking2.setMovieTimeslot("20-22");
 
         bookingRepository.save(booking2);
-
         bookingRepository.save(booking1);
-
         bookingRepository.save(booking);
 
 
@@ -96,6 +94,5 @@ public class BootStrapData implements CommandLineRunner {
         movieRepository.save(movie);
         movieRepository.save(movie1);
         movieRepository.save(movie2);
-
     }
 }

@@ -47,13 +47,6 @@ innerLogin.onclick = function (){
             .then(response => response.json())
             .then(data => verifyUser(data, username, password));
 
-
-    //fetch en user baseret på brugernavn
-    //if user.username og user.password mathcer loginPassword og loginUsername
-    //document.getElementByID("loginPassword") og det samme for brugernavn
-    //matcher de, så sættes localstorage til user.id som nedenfor
-    //localStorage.setItem("userid", `${user.id}`);
-
 }
 
 function verifyUser(user, username, password){
