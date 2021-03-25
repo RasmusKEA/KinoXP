@@ -60,8 +60,13 @@ button{
 	width: 40%;
 }
 
+.movieDiv{
+	margin-top: 10px;
+}
+
 .movieBtnDiv{
 	padding-top: 15px;
+	margin-bottom: 20px;
 }
 
 .singleMovie{
@@ -206,3 +211,10 @@ input[type=text], input[type=password]{
 .deleteBtn:hover{
 	background-color: #b30000;
 }
+
+.coronaDiv{
+	border: 1px dotted #FCE205;
+	width: fit-content;
+	margin: 0 auto;
+}
+
