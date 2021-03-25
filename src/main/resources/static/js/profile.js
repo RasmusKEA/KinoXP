@@ -142,6 +142,12 @@ function profileView(movie) {
     })
 
 
+    let logoutBtn = document.getElementById("logoutBtn");
+
+    logoutBtn.onclick = function (){
+        localStorage.removeItem("userid");
+        location.href = '/';
+    }
 
 
 }

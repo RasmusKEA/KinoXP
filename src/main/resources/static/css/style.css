@@ -208,7 +208,7 @@ input[type=text], input[type=password]{
 }
 
 
-.deleteBtn{
+.deleteBtn, .logoutBtn{
 	border: 1px solid #b30000 !important;
 	color: #b30000;
 	background-color: transparent;
@@ -216,7 +216,7 @@ input[type=text], input[type=password]{
 	margin-left: 15px;
 }
 
-.deleteBtn:hover{
+.deleteBtn:hover, .logoutBtn:hover{
 	background-color: #b30000;
 }
 

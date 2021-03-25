@@ -117,8 +117,4 @@ bookATicket.onclick = function (){
                 console.log("Error:", error)
             });
     }
-
-
-
-
 }
