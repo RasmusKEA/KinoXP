@@ -1,4 +1,3 @@
-let movieid = localStorage.getItem("movieid");
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -104,6 +103,7 @@ function verifyTimeslot(movies){
         "releaseYear": `${releaseyear.value}`,
         "genre": `${genre.value}`,
         "image": `${image.value}`,
+        "image": `${image.value}`,
         "hall" : `${hall.value}`,
         "timeslot" : `${timeslot.value}`
     };
@@ -122,6 +122,14 @@ function verifyTimeslot(movies){
 
     let isMoviePlaying = false;
 
+    fetch(minurl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log("success", data)
+        })
+        .catch((error) => {
+            console.log("Error:", error)
+        });
     movies.forEach(movie =>{
         if(movie.hall === hall.value && movie.timeslot === timeslot.value){
             window.alert(`${movie.movieTitle} is already playing in this hall at that time`);
@@ -140,6 +148,7 @@ function verifyTimeslot(movies){
                     console.log("Error:", error)
                 });
 
+            location.reload();
             window.alert(`${movietitle.value} has been scheduled`);
             location.reload();
         }else{
@@ -227,6 +236,42 @@ function deleteMovie(){
     let movieToDelete = {
         "id": `${movieId.value}`,
     };
+
+
+}
+
+function deleteMovie(){
+    const movieId = document.getElementById('movies');
+
+    let movieToDelete = {
+        "id": `${movieId.value}`,
+    };
+
+    const minurl = `http://localhost:8080/deleteMovie/${movieId.value}`
+
+    let body = JSON.stringify(movieToDelete);
+
+
+    const requestOptions = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: "DELETE",
+        body: body
+    };
+
+    fetch(minurl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log("success", data)
+        })
+        .catch((error) => {
+            console.log("Error:", error)
+        });
+
+    location.reload();
+
+
 }
 
 
