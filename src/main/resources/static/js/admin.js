@@ -183,5 +183,15 @@ function editMovie(){
 
 }
 
+function deleteMovie(){
+    const movieId = document.getElementById('movies');
+
+    let movieToDelete = {
+        "id": `${movieId.value}`,
+    };
+
+    
+}
+
 
 
