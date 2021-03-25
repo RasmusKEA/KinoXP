@@ -1,4 +1,3 @@
-let movieid = localStorage.getItem("movieid");
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -77,16 +76,36 @@ window.onclick = function(event) {
 }
 
 function createMovie() {
+
+    const requestObject = {
+        method : "GET",
+        "content-type" : "application/json",
+        redirect : "follow"
+    }
+
+    fetch(`http://localhost:8080/getAllMovies`, requestObject)
+        .then(response => response.json())
+        .then(movies => verifyTimeslot(movies));
+
+
+}
+
+function verifyTimeslot(movies){
     const movietitle = document.querySelector('#movietitle');
     const genre = document.querySelector('#genre');
     const releaseyear = document.querySelector('#releaseyear');
     const image = document.querySelector('#image');
+    const hall = document.querySelector('#hall');
+    const timeslot = document.querySelector('#timeslot');
 
     let newMovie = {
         "movieTitle": `${movietitle.value}`,
         "releaseYear": `${releaseyear.value}`,
         "genre": `${genre.value}`,
-        "image": `${image.value}`
+        "image": `${image.value}`,
+        "image": `${image.value}`,
+        "hall" : `${hall.value}`,
+        "timeslot" : `${timeslot.value}`
     };
 
     const minurl = "http://localhost:8080/createMovie"
@@ -101,6 +120,7 @@ function createMovie() {
         body: body
     };
 
+    let isMoviePlaying = false;
 
     fetch(minurl, requestOptions)
         .then(response => response.json())
@@ -110,8 +130,35 @@ function createMovie() {
         .catch((error) => {
             console.log("Error:", error)
         });
+    movies.forEach(movie =>{
+        if(movie.hall === hall.value && movie.timeslot === timeslot.value){
+            window.alert(`${movie.movieTitle} is already playing in this hall at that time`);
+            isMoviePlaying = true;
+        }
+    })
 
-    location.reload();
+    if(isMoviePlaying === false){
+        if(hall.value !== "Select hall" && timeslot.value !== "Select timeslot" ){
+            fetch(minurl, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("success", data)
+                })
+                .catch((error) => {
+                    console.log("Error:", error)
+                });
+
+            location.reload();
+            window.alert(`${movietitle.value} has been scheduled`);
+            location.reload();
+        }else{
+            window.alert(`Please select hall and/or timeslot`);
+        }
+
+    }
+
+
+
 }
 
 const requestObject = {
@@ -180,6 +227,16 @@ function editMovie(){
         });
 
     location.reload();
+
+}
+
+function deleteMovie(){
+    const movieId = document.getElementById('movies');
+
+    let movieToDelete = {
+        "id": `${movieId.value}`,
+    };
+
 
 }
 
