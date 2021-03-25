@@ -50,7 +50,7 @@ function bookMovie(booking) {
     imgPoster.setAttribute("height", "450");
 
     date.className = "inputDate";
-    bookATicket.className = "btn btn-outline-success my-2 my-sm-0 loginBtn bookBtn";
+    bookATicket.className = "btn btn-outline-success my-2 my-sm-0 loginBtn bookingBtn";
     posterElement.className = "posterDiv";
     descElement.className = "descDiv";
     spanGenre.className = "spanGenre";
