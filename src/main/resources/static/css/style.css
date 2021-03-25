@@ -60,6 +60,14 @@ button{
 	width: 40%;
 }
 
+.bookBtn{
+	display: block;
+}
+
+.inputDate{
+	margin-bottom: 10px;
+}
+
 .movieDiv{
 	margin-top: 10px;
 }

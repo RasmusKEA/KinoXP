@@ -32,13 +32,14 @@ function bookMovie(booking) {
     const spanGenre = document.createElement('span');
     const desc = document.createElement('p');
     const hallTag = document.createElement('p')
+    const date = document.createElement("INPUT");
 
-
+    date.setAttribute("type", "date");
     desc.innerText = "Lorem ipsum dauda";
     pTitle.innerText = booking.movieTitle;
     pReleaseYear.innerText = booking.releaseYear;
     spanGenre.innerText = booking.genre;
-    hallTag.innerText = booking.hall;
+    hallTag.innerText = `In ${booking.hall} at ${booking.timeslot}`;
     bookATicket.innerHTML = "Book a ticket";
     bookATicket.setAttribute("id", booking.id);
 
@@ -48,6 +49,7 @@ function bookMovie(booking) {
     imgPoster.setAttribute("width", "300");
     imgPoster.setAttribute("height", "450");
 
+    date.className = "inputDate";
     bookATicket.className = "btn btn-outline-success my-2 my-sm-0 loginBtn bookBtn";
     posterElement.className = "posterDiv";
     descElement.className = "descDiv";
@@ -61,6 +63,7 @@ function bookMovie(booking) {
     descElement.append(spanGenre);
     descElement.append(desc);
     descElement.append(hallTag);
+    descElement.append(date);
     descElement.append(bookATicket);
 
     bookElement.append(descElement);
