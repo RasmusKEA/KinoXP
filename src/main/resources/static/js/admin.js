@@ -1,3 +1,4 @@
+let movieid = localStorage.getItem("movieid");
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -26,6 +27,7 @@ const btn1 = document.getElementById("editBtn");
 // Get the <span> element that closes the modal
 const close = document.getElementsByClassName("close-modal")[0];
 
+
 // When the user clicks on <span> (x), close the modal
 close.onclick = function() {
     modal1.style.display = "none";
@@ -46,11 +48,13 @@ function getSingleMovie(idMovie){
 function populateEditModal(movie){
     const title = document.getElementById("movietitleEdit");
     const genre = document.getElementById("genreEdit");
+    const hall = document.getElementById("hallEdit")
     const releaseYear = document.getElementById("releaseyearEdit");
     const img = document.getElementById("imageEdit");
 
     title.value = movie.movieTitle;
     genre.value = movie.genre;
+    hall.value = movie.hall;
     releaseYear.value = movie.releaseYear;
     img.value = movie.image;
 }
@@ -133,7 +137,49 @@ function populateSelect(movie){
     })
 }
 
+
+
 function editMovie(){
+    const movieId = document.getElementById('movies');
+    const movietitleEdit = document.querySelector('#movietitleEdit');
+    const genreEdit = document.querySelector('#genreEdit');
+    const hallEdit = document.querySelector('#hallEdit');
+    const releaseyearEdit = document.querySelector('#releaseyearEdit');
+    const imageEdit = document.querySelector('#imageEdit');
+
+
+    let newMovie = {
+        "id": `${movieId.value}`,
+        "movieTitle": `${movietitleEdit.value}`,
+        "releaseYear": `${releaseyearEdit.value}`,
+        "hall": `${hallEdit.value}`,
+        "genre": `${genreEdit.value}`,
+        "image": `${imageEdit.value}`
+    };
+
+    const minurl = "http://localhost:8080/createMovie/"
+
+    let body = JSON.stringify(newMovie);
+
+
+    const requestOptions = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: "POST",
+        body: body
+    };
+
+    fetch(minurl, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log("success", data)
+        })
+        .catch((error) => {
+            console.log("Error:", error)
+        });
+
+    location.reload();
 
 }
 
